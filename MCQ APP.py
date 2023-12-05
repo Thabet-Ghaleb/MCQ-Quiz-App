@@ -9,7 +9,7 @@ def questionsGeneration(topic, num_questions, openai_api_key): #Defining a funct
     try: #Start catching error technique to debug
 
          prompt = f"Create {num_questions} multiple choice questions about {topic} with 4 answer choices." #Define the prompt that gpt will take.
-         response = openai.completions.create(model="gpt-3.5-turbo",prompt=prompt,max_tokens=150,n = 1,temperature=0.7) #generate the defined prompt
+         response = openai.completions.create(model="gpt-3.5-turbo",prompt=prompt) #generate the defined prompt
             
          question, *answers = response.split('\n') #Make two lines, the first for the questions and the second for the answers
          questions.append[[question, answers]] #put the question and its answers to the questions list
@@ -41,4 +41,4 @@ def main(): #Main function
 
         if st.button("Submit Quiz"): #When pressing this button
             st.write(f"Your score: {score}/{num_questions}") #Print the score
-main() 
+main()
